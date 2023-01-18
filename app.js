@@ -1,1 +1,1 @@
-console.log('Programa inicializado');
+console.log('Programa inicializado ✅');
