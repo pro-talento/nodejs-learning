@@ -15,6 +15,7 @@ const getTasks = (req, res) => {
 
 const getTask = (req, res) => {
   console.log(`Busca la tarea ${req.params.id}`);
+  console.log(req.params);
   return res.status(200).json({});
 };
 
