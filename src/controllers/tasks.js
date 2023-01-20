@@ -1,11 +1,16 @@
+const database = require('../models');
+
 const createTask = (req, res) => {
   console.log('CREAR TAREAS');
-  return res.status(200).json({ message: 'Tarea creada' });
+  const task = req.body;
+  const createdTask = database.tasks.create(task)
+  return res.status(200).json(createdTask);
 };
 
 const getTasks = (req, res) => {
   console.log('Busca la lista de tareas');
-  return res.status(200).json({ list: [], count: 0 });
+  const taskList = database.tasks.fetchAll()
+  return res.status(200).json({ list: taskList, count: taskList.length });
 };
 
 const getTask = (req, res) => {
