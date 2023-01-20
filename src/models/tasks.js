@@ -11,7 +11,12 @@ const deleleTask = (id) => {
 };
 
 const fetchTask = (id) => {
-
+  console.log('Aqui va el id');
+  console.log(id);
+  console.log(tasks);
+  const searchTask = tasks.find(task => task.id == id)
+  console.log(searchTask);
+  return searchTask;
 };
 
 const fetchTasks = () => {
