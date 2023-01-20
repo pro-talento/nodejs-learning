@@ -6,11 +6,11 @@ const createTask = (task) => {
   return taskToCreate;
 };
 
-const deleleTask = () => {
+const deleleTask = (id) => {
 
 };
 
-const fetchTask = () => {
+const fetchTask = (id) => {
 
 };
 
@@ -18,7 +18,7 @@ const fetchTasks = () => {
   return tasks;
 };
 
-const updateTask = () => {
+const updateTask = (id) => {
 
 };
 
