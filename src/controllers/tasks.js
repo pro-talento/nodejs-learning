@@ -14,9 +14,8 @@ const getTasks = (req, res) => {
 };
 
 const getTask = (req, res) => {
-  console.log(`Busca la tarea ${req.params.id}`);
+  console.log(`Busca la tarea`);
   const searchTask = database.tasks.fetch(req.params.id)
-  console.log(searchTask);
   return res.status(200).json(searchTask);
 };
 
@@ -27,7 +26,9 @@ const updateTask = (req, res) => {
 
 const deleteTask = (req, res) => {
   console.log(`Borra la tarea ${req.params.id}`);
-  return res.status(200).json({ message: 'Tarea eliminada' });
+  const deleteTaskRequest = database.tasks.delete(req.params.id);
+  console.log(deleteTaskRequest);
+  return res.status(200).json({ message: 'Tarea Eliminada'  });
 };
 
 module.exports = {

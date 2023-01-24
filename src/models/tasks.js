@@ -7,15 +7,13 @@ const createTask = (task) => {
 };
 
 const deleleTask = (id) => {
-
+  const deleteTask = tasks.filter((task) => task.id != id);
+  const newTasks = [...deleteTask];
+  return newTasks;
 };
 
 const fetchTask = (id) => {
-  console.log('Aqui va el id');
-  console.log(id);
-  console.log(tasks);
   const searchTask = tasks.find(task => task.id == id)
-  console.log(searchTask);
   return searchTask;
 };
 
@@ -24,6 +22,7 @@ const fetchTasks = () => {
 };
 
 const updateTask = (id) => {
+  
 
 };
 
