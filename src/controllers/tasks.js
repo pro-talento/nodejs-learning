@@ -24,6 +24,7 @@ const getTask = (req, res) => {
 
 const updateTask = (req, res) => {
   console.log(`Actualiza la tarea ${req.params.id}`);
+  console.log(req.body)
   const updatedTask = database.tasks.update(req.params.id, req.body);
   if (!updatedTask) {
     return res.status(404).json({ message: 'Task not found' });

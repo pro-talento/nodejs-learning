@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 8000;
 console.log(process.env.SALUDO);
 
 // Middleware
-app.use(cors());
 app.use(bodyParser.json());
+app.use(cors());
 
 // Tasks CRUD
 app.post('/tasks', controllers.tasks.createTask);
