@@ -3,6 +3,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const controllers = require('./src/controllers');
 
@@ -10,7 +11,8 @@ const PORT = process.env.PORT || 8000;
 console.log(process.env.SALUDO);
 
 // Middleware
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.json());
 
 // Tasks CRUD
 app.post('/tasks', controllers.tasks.createTask);
