@@ -15,18 +15,29 @@ const getTasks = (req, res) => {
 
 const getTask = (req, res) => {
   console.log(`Busca la tarea ${req.params.id}`);
-  console.log(req.params);
-  return res.status(200).json({});
+  const task = database.tasks.fetch(req.params.id);
+  if (!task) {
+    return res.status(404).json({ message: 'Task not found' });
+  }
+  return res.status(200).json(task);
 };
 
 const updateTask = (req, res) => {
   console.log(`Actualiza la tarea ${req.params.id}`);
-  return res.status(200).json({});
+  const updatedTask = database.tasks.update(req.params.id, req.body);
+  if (!updatedTask) {
+    return res.status(404).json({ message: 'Task not found' });
+  }
+  return res.status(200).json(updatedTask);
 };
 
 const deleteTask = (req, res) => {
   console.log(`Borra la tarea ${req.params.id}`);
-  return res.status(200).json({ message: 'Tarea eliminada' });
+  const deletedTask = database.tasks.delete(req.params.id);
+  if (!deletedTask) {
+    return res.status(404).json({ message: 'Task not found' });
+  }
+  return res.status(200).json(deletedTask);
 };
 
 module.exports = {
