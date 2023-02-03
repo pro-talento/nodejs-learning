@@ -1,4 +1,4 @@
-const tasksModels = require('./tasks');
+const tasksModels = require('./tasks-sql');
 
 module.exports = {
   tasks: tasksModels

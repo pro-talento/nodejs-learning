@@ -7,9 +7,9 @@ const createTask = (req, res) => {
   return res.status(200).json(createdTask);
 };
 
-const getTasks = (req, res) => {
+const getTasks = async (req, res) => {
   console.log('Busca la lista de tareas');
-  const taskList = database.tasks.fetchAll()
+  const taskList = await database.tasks.fetchAll()
   return res.status(200).json({ list: taskList, count: taskList.length });
 };
 
