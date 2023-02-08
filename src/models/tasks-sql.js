@@ -20,7 +20,8 @@ const fetchTasks = async () => {
   return tasks
 };
 
-const updateTask = (id, values) => {
+const updateTask = async (id, values) => {
+  const updatedTask = await db.tasks.update(id, values);
   return updatedTask
 };
 
