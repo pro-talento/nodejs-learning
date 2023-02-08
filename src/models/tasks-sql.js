@@ -1,28 +1,27 @@
 const db = require('./db')
 
-const createTask = (task) => {
-
-  return taskToCreate;
+const createTask = async (task) => {
+  const createdTask = await db.tasks.create(task)
+  return createdTask
 };
 
 const deleteTask = (id) => {
 
-  return deletedTask;
+  return deletedTask
 };
 
-const fetchTask = (id) => {
-  
-  return task;
+const fetchTask = async (id) => {
+  const task = await db.tasks.get(id)
+  return task
 };
 
 const fetchTasks = async () => {
   const tasks = await db.selectAllTasks()
-  return tasks;
+  return tasks
 };
 
 const updateTask = (id, values) => {
-
-  return updatedTask;
+  return updatedTask
 };
 
 module.exports = {

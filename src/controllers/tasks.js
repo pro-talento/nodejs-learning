@@ -1,9 +1,9 @@
 const database = require('../models');
 
-const createTask = (req, res) => {
+const createTask = async (req, res) => {
   console.log('CREAR TAREAS');
   const task = req.body;
-  const createdTask = database.tasks.create(task)
+  const createdTask = await database.tasks.create(task.title)
   return res.status(200).json(createdTask);
 };
 
@@ -13,9 +13,9 @@ const getTasks = async (req, res) => {
   return res.status(200).json({ list: taskList, count: taskList.length });
 };
 
-const getTask = (req, res) => {
+const getTask = async (req, res) => {
   console.log(`Busca la tarea ${req.params.id}`);
-  const task = database.tasks.fetch(req.params.id);
+  const task = await database.tasks.fetch(req.params.id);
   if (!task) {
     return res.status(404).json({ message: 'Task not found' });
   }
