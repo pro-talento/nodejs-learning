@@ -5,8 +5,8 @@ const createTask = async (task) => {
   return createdTask
 };
 
-const deleteTask = (id) => {
-
+const deleteTask = async(id) => {
+  const deletedTask = await db.tasks.delete(id)
   return deletedTask
 };
 

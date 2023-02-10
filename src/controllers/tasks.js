@@ -32,9 +32,9 @@ const updateTask = async (req, res) => {
   return res.status(200).json(updatedTask);
 };
 
-const deleteTask = (req, res) => {
+const deleteTask = async (req, res) => {
   console.log(`Borra la tarea ${req.params.id}`);
-  const deletedTask = database.tasks.delete(req.params.id);
+  const deletedTask = await  database.tasks.delete(req.params.id);
   if (!deletedTask) {
     return res.status(404).json({ message: 'Task not found' });
   }
