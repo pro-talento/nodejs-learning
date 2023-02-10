@@ -3,7 +3,7 @@ const pool = new Pool()
  
 // Obtener lista de tareas
 async function selectAllTasks() {
-  const res = await pool.query('SELECT * FROM todos;')
+  const res = await pool.query('SELECT * FROM todos ORDER BY id;')
   return res.rows
 }
 
@@ -51,6 +51,7 @@ async function updateTask(taskId, taskChanges) {
 
 // Delete task
 async function deleteTask(taskId) {
+  // TODO: Cambiar valor default de columna completed de tabla todos
   const res = await pool.query('DELETE FROM todos WHERE id=$1 RETURNING *;', [taskId])
   return res.rows[0]
 }
