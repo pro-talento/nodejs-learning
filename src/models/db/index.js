@@ -49,11 +49,18 @@ async function updateTask(taskId, taskChanges) {
   return null
 }
 
+// Delete task
+async function deleteTask(taskId) {
+  const res = await pool.query('DELETE FROM todos WHERE id=$1 RETURNING *;', [taskId])
+  return res.rows[0]
+}
+
 module.exports = {
   selectAllTasks: selectAllTasks,
   tasks: {
     create: createTask,
     get: getTask,
-    update: updateTask
+    update: updateTask,
+    delete: deleteTask,
   }
 }
