@@ -56,6 +56,19 @@ async function deleteTask(taskId) {
   return res.rows[0]
 }
 
+async function createUser(newUser) {
+  const { email, password, name } = newUser
+  
+  const res = await pool.query(`
+      INSERT INTO users (email, password, name)
+      VALUES ($1, $2, $3) 
+      RETURNING *;`, 
+    [email, password, name]
+  );
+
+  return res.rows[0]
+}
+
 module.exports = {
   selectAllTasks: selectAllTasks,
   tasks: {
@@ -63,5 +76,8 @@ module.exports = {
     get: getTask,
     update: updateTask,
     delete: deleteTask,
+  }, 
+  users: {
+    create: createUser
   }
 }

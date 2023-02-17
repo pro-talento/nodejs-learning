@@ -1,5 +1,7 @@
 const tasksModels = require('./tasks-sql');
+const usersModels = require('./users');
 
 module.exports = {
-  tasks: tasksModels
+  tasks: tasksModels,
+  users: usersModels,
 }
