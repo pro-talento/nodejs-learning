@@ -22,6 +22,7 @@ app.patch('/tasks/:id', controllers.tasks.updateTask);
 app.delete('/tasks/:id', controllers.tasks.deleteTask);
 
 app.post('/users', controllers.users.create);
+app.post('/login', controllers.users.login);
 
 // test
 // Cambio de main

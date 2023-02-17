@@ -69,6 +69,11 @@ async function createUser(newUser) {
   return res.rows[0]
 }
 
+async function getUserByEmail(email) {
+  const res = await pool.query(`SELECT * FROM users WHERE email=$1`, [email])
+  return res.rows[0]
+}
+
 module.exports = {
   selectAllTasks: selectAllTasks,
   tasks: {
@@ -78,6 +83,7 @@ module.exports = {
     delete: deleteTask,
   }, 
   users: {
-    create: createUser
+    create: createUser,
+    getByEmail: getUserByEmail
   }
 }
