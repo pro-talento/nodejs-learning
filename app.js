@@ -10,9 +10,11 @@ const controllers = require('./src/controllers');
 const PORT = process.env.PORT || 8000;
 console.log(process.env.SALUDO);
 
-// Middleware
+// Middleware 
 app.use(bodyParser.json());
 app.use(cors());
+
+// Authorization Middleware
 
 // Tasks CRUD
 app.post('/tasks', controllers.tasks.createTask);
