@@ -1,16 +1,32 @@
+const validate = require('uuid-validate');
+
 const database = require('../models');
 
 const createTask = async (req, res) => {
-  console.log('CREAR TAREAS');
+  //TODO: Cambiar a JWT
+  const { authorization } = req.headers;
+  const authIsValid = validate(authorization, 4) 
+
+  if (!authIsValid) {
+    return res.status(402).json({ message: 'Not authorized' })
+  }
+  
   const task = req.body;
-  const createdTask = await database.tasks.create(task.title)
+  const createdTask = await database.tasks.create(authorization, task.title)
   return res.status(200).json(createdTask);
 };
 
 const getTasks = async (req, res) => {
-  console.log('Busca la lista de tareas');
-  const taskList = await database.tasks.fetchAll()
-  return res.status(200).json({ list: taskList, count: taskList.length });
+  //TODO: Cambiar a JWT
+  const { authorization } = req.headers;
+  const authIsValid = validate(authorization, 4) 
+
+  if (!authIsValid) {
+    return res.status(402).json({ message: 'Not authorized' })
+  }
+
+  const taskList = await database.tasks.fetchAll(authorization)
+  return res.status(200).json({ list: taskList, count: taskList.length })
 };
 
 const getTask = async (req, res) => {

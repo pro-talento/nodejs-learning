@@ -1,7 +1,7 @@
 const db = require('./db')
 
-const createTask = async (task) => {
-  const createdTask = await db.tasks.create(task)
+const createTask = async (token, task) => {
+  const createdTask = await db.tasks.create(token, task)
   return createdTask
 };
 
@@ -16,8 +16,8 @@ const fetchTask = async (id) => {
   return task
 };
 
-const fetchTasks = async () => {
-  const tasks = await db.selectAllTasks()
+const fetchTasks = async (token) => {
+  const tasks = await db.selectAllTasks(token)
   return tasks
 };
 

@@ -2,14 +2,14 @@ const { Pool } = require('pg')
 const pool = new Pool()
  
 // Obtener lista de tareas
-async function selectAllTasks() {
-  const res = await pool.query('SELECT * FROM todos ORDER BY id;')
+async function selectAllTasks(userId) {
+  const res = await pool.query('SELECT * FROM todos WHERE user_id=$1 ORDER BY id;', [userId])
   return res.rows
 }
 
 // Crear tarea
-async function createTask(task) {
-  const res = await pool.query("INSERT INTO todos (title) VALUES ($1) RETURNING *;", [task])
+async function createTask(userId, task) {
+  const res = await pool.query("INSERT INTO todos (title, user_id) VALUES ($1, $2) RETURNING *;", [task, userId])
   return res.rows[0]
 }
 
