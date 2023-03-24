@@ -31,4 +31,5 @@ app.post('/login', controllers.users.login);
 
 app.listen(PORT, () => {
   console.log(`Servidor inicializado en puerto ${PORT} 🚀`);
+  console.log('Estamos listos para recibir peticiones 🌎')
 });
